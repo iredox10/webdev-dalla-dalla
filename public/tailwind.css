@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply bg-[#530853]
+}
+.btn{
+    @apply p-2 rounded-md capitalize 
+}
+.container{
+    @apply p-2 md:w-[80%] mx-3 mx-auto
+}
+input,textarea{
+    @apply w-full md:w-[50%] p-2 outline-none 
+}
+
+.card{
+    @apply bg-[#640e64] mb-4 md:mb-0 drop-shadow-lg p-3
+}
+
+label{
+    @apply block capitalize text-white text-lg
+}

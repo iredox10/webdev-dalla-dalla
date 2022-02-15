@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %> 
+</head>
+<body  class="bg-[#530853]">
+<%- include('./partials/header.ejs') %>
+    <h1>admin page</h1>
+    <div class="container flex items-center gap-3">
+        <a href="/add-blog">
+        <div class="card text-white capitalize">
+            <h1>add new blog</h1>
+            <p>admin your new blog here...</p>
+        </div>
+        </a>
+        <a href="/view-blogs">
+        <div class="card text-white capitalize">
+            <h1>view blogs</h1>
+            <p>view posted blogs here...</p>
+        </div>
+        </a>
+    </div>
+</body>
+</html>

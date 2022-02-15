@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %> 
+<body>
+    <%- include('./partials/header.ejs') %>
+    <div class="container">
+            <section class="mt-10 p-4 md:p-8 md:grid grid-cols-3 gap-5 break-words">
+                <% blogs.forEach(blog=> { %>
+                    <div class="bg-[#640e64] mb-4 md:mb-0 drop-shadow-lg flex-1">
+                        <img src="" alt="">
+                        <div class="p-3 text-white capitalize">
+                            <h1 class=" text-3xl font-bold">
+                                <%= blog.title %>
+                                <span class="text-sm bg-pink-300 p-1 rounded"><%=blog.tag%> </span>
+                            </h1>
+                            <p class="my-2">
+                                <%= blog.doc.slice(0,200) %> ...
+                            </p>
+                            <div class="flex gap-2">
+                                <a class="btn bg-green-400" href="/blog/<%=blog.id %>">read more</a>
+                                <a class="btn bg-yellow-400" href="/edit-blog/<%=blog.id %>">edit blog</a>
+                                <a class="btn bg-red-600" href="/delete/<%=blog.id %>">delete blog</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+            
+            </section>
+    </div>
+</body>
+</html>

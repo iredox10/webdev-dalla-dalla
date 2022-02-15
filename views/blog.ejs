@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title><%= title  %> </title>
+</head>
+<body>
+    <%- include('./partials/header.ejs') %> 
+    <div class="container text-white my-5 ">
+    <div class="top bg-">
+    <h1 class="font-bold text-4xl uppercase"><%= blog.title  %> </h1>
+    <span><%= blog.tag  %> </span>
+    <p><span>created on</span> <%= blog.createdAt%> </p>
+    </div>
+    <div class="bg-[rgba(114,27,114,.4)] p-2 my-4 break-words"><%= blog.doc  %> </div>
+    <form action="/comment" method="POST" class="capitalize">
+        <h1 class="text-white uppercase  font-bold ">comment</h1>
+        <div class="mb-3">
+            <!-- <label for="comment" class="text-white">rubuta tsokaci</label> -->
+            <textarea name="comment" id="comment" class="p-2 text-black" rows="5"></textarea>
+        </div>
+        <button class="bg-orange-400 p-2">comment</button>
+    </form>
+    </div>
+
+</body>
+</html>
