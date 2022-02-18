@@ -9,10 +9,17 @@ const blogSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    comment: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'comments'
+        }
+    ],
     tag: {
         type:String,
         required:true
     }
 },{timestamps:true})
 
-module.exports = mongoose.model('blog',blogSchema)
+
+module.exports = mongoose.model('Blog',blogSchema)

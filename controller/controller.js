@@ -1,5 +1,5 @@
 const Blog = require('../model/blog')
-const Comment = require('../model/comment')
+// const Comment = require('../model/comment')
 
 exports.get_home = async (req, res) => {
     let blogs = await Blog.find()
@@ -27,7 +27,12 @@ exports.post_blog = async (req, res) => {
 exports.get_blog = async (req, res) => {
     let id = req.params.id
     let blog = await Blog.findById(id)
-    res.render('blog',{title:blog.tiltle, blog})
+    // let comments = await Blog.findById(id).populate({
+    //     path: 'comment',
+    //     select: 'comment'
+    // })
+    res.render('blog', { title: blog.tiltle, blog })
+    // console.log(comments)
 }
 
 exports.get_view_blogs = async (req, res) => {
@@ -35,6 +40,23 @@ exports.get_view_blogs = async (req, res) => {
     res.render('admin-view-blogs',{blogs,title:'blogs'})
 }
 
-exports.post_comment = async (req, res) => {
-    
+// exports.post_comment = async (req, res) => {
+//     let comment = new Comment(req.body)
+//     let newComment = await comment.save()
+//     res.send(newComment)
+//     // res.redirect(`/blog/${req.params.id}`)
+// }
+
+exports.get_edit_blog = async (req, res) => {
+    let blog = await Blog.findById(req.params.id)
+    res.render('edit-blog',{title:'edit-blog',blog})
+}
+exports.edit_blog = async (req, res) => {
+    let blog = await Blog.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/view-blogs')
+}
+
+exports.delete_blog = async (req, res) => {
+    let blog = await Blog.findByIdAndDelete(req.params.id)
+    res.redirect('/view-blogs')
 }

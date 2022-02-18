@@ -16,10 +16,12 @@
                             <p class="my-2">
                                 <%= blog.doc.slice(0,200) %> ...
                             </p>
-                            <div class="flex gap-2">
+                            <div class="flex items-center gap-2">
                                 <a class="btn bg-green-400" href="/blog/<%=blog.id %>">read more</a>
                                 <a class="btn bg-yellow-400" href="/edit-blog/<%=blog.id %>">edit blog</a>
-                                <a class="btn bg-red-600" href="/delete/<%=blog.id %>">delete blog</a>
+                                <form action="/delete-blog/<%=  blog.id  %>?_method=DELETE" method="POST">
+                                <button class="btn bg-red-600" href="/delete/<%=blog.id %>">delete blog</button>
+                                </form>
                             </div>
                         </div>
                     </div>
