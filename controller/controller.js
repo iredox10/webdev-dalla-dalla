@@ -1,5 +1,11 @@
+const jwt = require('jsonwebtoken')
 const Blog = require('../model/blog')
 // const Comment = require('../model/comment')
+
+
+const verifyAdmin = (id) => {
+    jwt.sign({id:id},'admin secre')
+}
 
 exports.get_home = async (req, res) => {
     let blogs = await Blog.find()
@@ -59,4 +65,9 @@ exports.edit_blog = async (req, res) => {
 exports.delete_blog = async (req, res) => {
     let blog = await Blog.findByIdAndDelete(req.params.id)
     res.redirect('/view-blogs')
+}
+
+
+exports.get_about = async (req, res) => {
+    res.render('about', { title:'about'})
 }
