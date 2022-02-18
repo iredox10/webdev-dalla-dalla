@@ -12,8 +12,17 @@
         <p>zaka samu bayanai da kuma tips and tricks ta yadd zakayi amfani da</p>
         <p>HTML, CSS, JAVASCRIPT, PYTHON, DA FrAmeWorkS dinsu</p>
     </main>
-
-<section class="mt-10 p-4 md:p-8 md:grid grid-cols-3 gap-5 break-words md:w-[80%] mx-auto">
+    <div class="container">
+    <form action="/search" class="flex justify-end items-center gap-3">
+        <div class="search-box">
+            <div class="search-bar">
+                <input type="text" name="search" class="" placeholder="duba topic kamar HTML" >
+            </div>
+        </div>
+        <button class="btn bg-[orange] text-white">search</button>
+    </form>
+    </div>
+    <section class="mt-10 p-4 md:p-8 md:grid grid-cols-3 gap-5 break-words md:w-[80%] mx-auto">
     <% blogs.forEach(blog => { %>
         <div class="bg-[#640e64] mb-4 md:mb-0 drop-shadow-lg flex-1">
             <img src="" alt="">

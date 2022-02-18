@@ -17,7 +17,8 @@ const blogSchema = new mongoose.Schema({
     ],
     tag: {
         type:String,
-        required:true
+        required: true,
+        uppercase: true
     }
 },{timestamps:true})
 

@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-const jwt = require('jsonwebtken')
-=======
+const jwt = require('jsonwebtoken')
 const Comment = require('../model/comment')
->>>>>>> fix-comment
 const Blog = require('../model/blog')
 const blog = require('../model/blog')
 
@@ -85,4 +82,13 @@ exports.delete_blog = async (req, res) => {
 
 exports.get_about = async (req, res) => {
     res.render('about', { title:'about'})
+}
+
+exports.search = async (req, res) => {
+    let searchTerm = req.query.search.toUpperCase()
+    let blogs = await Blog.find({ tag: searchTerm })
+    res.render('searchBlog', {
+        title: 'result', blogs, searchTerm
+    })
+    console.log(searchTerm)
 }
