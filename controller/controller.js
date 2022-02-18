@@ -1,5 +1,6 @@
+const Comment = require('../model/comment')
 const Blog = require('../model/blog')
-// const Comment = require('../model/comment')
+const blog = require('../model/blog')
 
 exports.get_home = async (req, res) => {
     let blogs = await Blog.find()
@@ -27,12 +28,11 @@ exports.post_blog = async (req, res) => {
 exports.get_blog = async (req, res) => {
     let id = req.params.id
     let blog = await Blog.findById(id)
-    // let comments = await Blog.findById(id).populate({
-    //     path: 'comment',
-    //     select: 'comment'
-    // })
-    res.render('blog', { title: blog.tiltle, blog })
-    // console.log(comments)
+    let comments = await Blog.findById(id).populate({
+        path: 'comment',
+        select:'comment'
+    })
+    res.render('blog', { title: blog.tiltle, blog , comments})
 }
 
 exports.get_view_blogs = async (req, res) => {
@@ -40,12 +40,24 @@ exports.get_view_blogs = async (req, res) => {
     res.render('admin-view-blogs',{blogs,title:'blogs'})
 }
 
-// exports.post_comment = async (req, res) => {
-//     let comment = new Comment(req.body)
-//     let newComment = await comment.save()
-//     res.send(newComment)
-//     // res.redirect(`/blog/${req.params.id}`)
-// }
+exports.post_comment = async (req, res) => {
+    const blogId = req.params.id
+    let comment = await Comment.create({
+        comment: req.body.comment,
+        blog: blogId
+    })
+    let newComment = await comment.save()
+    // res.send(newComment)
+    
+    const blog = await Blog.findById(blogId)
+    // res.send(blogId)
+
+    blog.comment.push(newComment)
+    await blog.save()
+
+    // res.send(blog)
+    res.redirect(`/blog/${blogId}`)
+}
 
 exports.get_edit_blog = async (req, res) => {
     let blog = await Blog.findById(req.params.id)
