@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtken')
 =======
 const Comment = require('../model/comment')
 >>>>>>> fix-comment
