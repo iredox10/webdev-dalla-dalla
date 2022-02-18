@@ -12,7 +12,7 @@ const blogSchema = new mongoose.Schema({
     comment: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'comments'
+            ref: 'comment'
         }
     ],
     tag: {

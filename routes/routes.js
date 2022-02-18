@@ -17,8 +17,12 @@ route.delete('/delete-blog/:id',controller.delete_blog)
 
 route.get('/view-blogs', controller.get_view_blogs)
 
+<<<<<<< HEAD
 route.get('/about', controller.get_about)
 
 // route.patch('/comment/:id',controller.post_comment)
+=======
+route.post('/comment/:id',controller.post_comment)
+>>>>>>> fix-comment
 
 module.exports = route
