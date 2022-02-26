@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!sanitizedHtmlTYPE html>
 <html lang="en">
     <%- include('./partials/head.ejs') %> 
 <body>
@@ -14,7 +14,7 @@
                                 <span class="text-sm bg-pink-300 p-1 rounded"><%=blog.tag%> </span>
                             </h1>
                             <p class="my-2">
-                                <%= blog.doc.slice(0,200) %> ...
+                                <%- blog.sanitizedHtml %> ...
                             </p>
                             <div class="flex items-center gap-2">
                                 <a class="btn bg-green-400" href="/blog/<%=blog.id %>">read more</a>
@@ -30,13 +30,5 @@
             </section>
     </div>
 
-
-    <script>
-        const form = document.forms[0]
-        form.addEventListener('submit', function(){
-            alert('delete')
-        })
-        
-    </script>
 </body>
 </html>

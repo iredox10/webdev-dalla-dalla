@@ -4,7 +4,7 @@ const Blog = require('../model/blog')
 const blog = require('../model/blog')
 
 
-const verifyAdmin = (id) => {
+const verifySignIN = (id) => {
     jwt.sign({id:id},'admin secre')
 }
 
@@ -14,6 +14,7 @@ exports.get_home = async (req, res) => {
 }
 
 exports.get_admin = (req, res) => {
+    res.cookie('admin','admin cookie',{maxAge:10000})
     res.render('admin', {title: 'admin - page'})
 }
 
@@ -38,12 +39,14 @@ exports.get_blog = async (req, res) => {
         path: 'comment',
         select:'comment'
     })
+    console.log(blog.slug)
     res.render('blog', { title: blog.tiltle, blog , comments})
 }
 
 exports.get_view_blogs = async (req, res) => {
     let blogs = await Blog.find()
     res.render('admin-view-blogs',{blogs,title:'blogs'})
+    // res.json({blogs})
 }
 
 exports.post_comment = async (req, res) => {
@@ -90,5 +93,4 @@ exports.search = async (req, res) => {
     res.render('searchBlog', {
         title: 'result', blogs, searchTerm
     })
-    console.log(searchTerm)
 }

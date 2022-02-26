@@ -22,3 +22,7 @@ input,textarea{
 label{
     @apply block capitalize text-white text-lg
 }
+
+h1{
+    @apply text-4xl capitalize 
+}
